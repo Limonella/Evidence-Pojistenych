@@ -76,10 +76,10 @@
             </div>
             <div class="form-group row">
                 <div class="col-2">
-                    <label class="col-form-label">Věk:</label>
+                    <label class="col-form-label">Email:</label>
                 </div>
                 <div class="col-10">
-                    <input type="number" class="form-control col-form-label" aria-describedby="emailHelp" th:field="*{vek}"/>
+                    <input type="text" class="form-control col-form-label" th:field="*{email}"/>
                 </div>
             </div>
             <div class="form-group row">
@@ -87,15 +87,15 @@
                     <label class="col-form-label">Telefon:</label>
                 </div>
                 <div class="col-10">
-                    <input type="text" class="form-control col-form-label" placeholder='th:text="${osoba.telefonniCislo}"' th:field="*{telefonniCislo}"/>
+                    <input type="text" class="form-control col-form-label" th:field="*{telefonniCislo}"/>
                 </div>
             </div>
-            <!--      <div class="form-group row">
+                 <div class="form-group row">
                       <div class="col-2">
                           <label class="col-form-label">Ulice a číslo popisné:</label>
                       </div>
                       <div class="col-10">
-                          <input type="text" class="form-control col-form-label" placeholder="Ve Svahu 3">
+                          <input type="text" class="form-control col-form-label" th:field="*{uliceACP}">
                       </div>
                   </div>
                   <div class="form-group row">
@@ -103,7 +103,7 @@
                           <label class="col-form-label">Město:</label>
                       </div>
                       <div class="col-10">
-                          <input type="text" class="form-control col-form-label" placeholder="Praha 1">
+                          <input type="text" class="form-control col-form-label" th:field="*{mesto}">
                       </div>
                   </div>
                   <div class="form-group row">
@@ -111,9 +111,9 @@
                           <label class="col-form-label">PSČ:</label>
                       </div>
                       <div class="col-10">
-                          <input type="text" class="form-control col-form-label" placeholder="100 00">
+                          <input type="text" class="form-control col-form-label" th:field="*{psc}">
                       </div>
-                  </div> -->
+                  </div>
             <div class="form-row text-center">
                 <div class="col my-2">
                     <button type="submit" class="btn btn-success">Uložit</button>

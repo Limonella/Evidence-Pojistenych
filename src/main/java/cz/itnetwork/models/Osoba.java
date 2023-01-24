@@ -5,24 +5,36 @@ public class Osoba {
     private int osoba_id;
     private String jmeno;
     private String prijmeni;
-    private int vek;
+    private String email;
     private String telefonniCislo;
+    private String uliceACP; // ulice a číslo popisné
+    private String mesto;
+    private String psc; // PSČ - poštovní směrovací číslo
 
-    public Osoba(String jmeno, String prijmeni, int vek, String telefonniCislo) {
-        this.jmeno = jmeno;
-        this.prijmeni = prijmeni;
-        this.vek =  vek;
-        this.telefonniCislo = telefonniCislo;
-    }
-
-    public Osoba(int osoba_id, String jmeno, String prijmeni, int vek, String telefonniCislo) {
+    // kompletní konstruktor
+    public Osoba(int osoba_id, String jmeno, String prijmeni, String email, String telefonniCislo, String uliceACP, String mesto, String psc) {
         this.osoba_id = osoba_id;
         this.jmeno = jmeno;
         this.prijmeni = prijmeni;
-        this.vek =  vek;
+        this.email = email;
         this.telefonniCislo = telefonniCislo;
+        this.uliceACP = uliceACP;
+        this.mesto = mesto;
+        this.psc = psc;
     }
 
+    // konstruktor bez id
+    public Osoba(String jmeno, String prijmeni, String email, String telefonniCislo, String uliceACP, String mesto, String psc) {
+        this.jmeno = jmeno;
+        this.prijmeni = prijmeni;
+        this.email = email;
+        this.telefonniCislo = telefonniCislo;
+        this.uliceACP = uliceACP;
+        this.mesto = mesto;
+        this.psc = psc;
+    }
+
+    // prázdný konstruktor
     public Osoba() {
     }
 
@@ -50,12 +62,12 @@ public class Osoba {
         this.prijmeni = prijmeni;
     }
 
-    public int getVek() {
-        return vek;
+    public String getEmail() {
+        return email;
     }
 
-    public void setVek(int vek) {
-        this.vek = vek;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getTelefonniCislo() {
@@ -66,9 +78,33 @@ public class Osoba {
         this.telefonniCislo = telefonniCislo;
     }
 
+    public String getUliceACP() {
+        return uliceACP;
+    }
+
+    public void setUliceACP(String uliceACP) {
+        this.uliceACP = uliceACP;
+    }
+
+    public String getMesto() {
+        return mesto;
+    }
+
+    public void setMesto(String mesto) {
+        this.mesto = mesto;
+    }
+
+    public String getPsc() {
+        return psc;
+    }
+
+    public void setPsc(String psc) {
+        this.psc = psc;
+    }
+
     @Override
     public String toString() {
-        return "\t" + jmeno + "\t" + prijmeni + "\t" + vek + "\t" + telefonniCislo;
+        return "\t" + jmeno + "\t" + prijmeni + "\t" + email + "\t" + telefonniCislo + "\t" + uliceACP + "\t" + mesto + "\t" + psc;
     }
 
 }

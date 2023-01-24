@@ -32,7 +32,7 @@ public class OsobaController {
     // CREATE
     @PostMapping("/novy-pojistenec/save")
     public String novyPojistenec(@ModelAttribute("osoba") Osoba osoba) {
-        spravceOsob.createOsobu(osoba);
+        spravceOsob.insertOsobu(osoba);
         return "redirect:/pojistenci";
     }
 
@@ -48,7 +48,7 @@ public class OsobaController {
     @GetMapping("/update/{osoba_id}")
     public ModelAndView upravaPojistence(@PathVariable(name = "osoba_id") int osoba_id) {
         ModelAndView updateView = new ModelAndView("update-pojistence");
-        Osoba osoba = spravceOsob.readOsobu(osoba_id);
+        Osoba osoba = spravceOsob.selectOsobu(osoba_id);
         updateView.addObject("osoba", osoba);
         return updateView;
     }
