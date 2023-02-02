@@ -30,7 +30,7 @@ public class OsobaController {
     }
 
     // CREATE
-    @PostMapping("/novy-pojistenec/save")
+    @PostMapping("/nove-pojistenec/save")
     public String novyPojistenec(@ModelAttribute("osoba") Osoba osoba) {
         spravceOsob.insertOsobu(osoba);
         return "redirect:/pojistenci";

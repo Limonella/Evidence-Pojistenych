@@ -104,7 +104,15 @@ public class Osoba {
 
     @Override
     public String toString() {
-        return "\t" + jmeno + "\t" + prijmeni + "\t" + email + "\t" + telefonniCislo + "\t" + uliceACP + "\t" + mesto + "\t" + psc;
+        return "Osoba{" +
+                "osoba_id=" + osoba_id +
+                ", jmeno='" + jmeno + '\'' +
+                ", prijmeni='" + prijmeni + '\'' +
+                ", email='" + email + '\'' +
+                ", telefonniCislo='" + telefonniCislo + '\'' +
+                ", uliceACP='" + uliceACP + '\'' +
+                ", mesto='" + mesto + '\'' +
+                ", psc='" + psc + '\'' +
+                '}';
     }
-
 }
