@@ -16,7 +16,7 @@ public class SpravceOsob {
     private static final String CREATE_USER_SQL = "INSERT INTO osoby (jmeno, prijmeni, email, telefonni_cislo, ulice_a_cp, mesto, psc) VALUES (?, ?, ?, ?, ?, ?, ?)";
     private static final String READ_USER_BY_ID_SQL = "SELECT * FROM osoby WHERE osoba_id=?";
     private static final String UPDATE_USER_SQL = "UPDATE osoby SET jmeno=?, prijmeni=?, email=?, telefonni_cislo=?, ulice_a_cp=?, mesto=?, psc=? WHERE osoba_id=?";
-    private static final String DELETE_USER_SQL = "DELETE FROM osoby WHERE osoba_id=?";
+    private static final String DELETE_USER_SQL = "DELETE FROM osoby WHERE osoba_id=?"; // v MySQL je nastaveno automatické mazání pojištění mazané osoby pomocí ON DELETE CASCADE;
     private static final String READ_ALL_SQL = "SELECT * FROM osoby";
 
     // CREATE přidá osobu do seznamu pojištených
@@ -84,7 +84,7 @@ public class SpravceOsob {
         } return rowUpdated;
     }
 
-    // DELETE smaže osobo v seznamu pojištěných
+    // DELETE smaže osobu v seznamu pojištěných
     public boolean deleteOsobu(int osoba_id) {
         boolean rowDeleted = false;
         try (Connection spojeni = DriverManager.getConnection(jdbcURL);
@@ -98,7 +98,7 @@ public class SpravceOsob {
         } return rowDeleted;
     }
 
-    // Vypiš seznam všech pojištěných
+    // Vypíše seznam všech pojištěných
     public List<Osoba> readSeznamOsob() {
         List<Osoba> seznamOsob = new ArrayList<>();
         try (Connection spojeni = DriverManager.getConnection(jdbcURL);

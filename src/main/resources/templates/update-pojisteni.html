@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <script type="text/javascript" th:src="@{/js/action.js}"></script>
-    <title>Nové pojištění</title>
+    <title>Edit pojištění</title>
 </head>
 
 <body>
@@ -46,25 +46,24 @@
     </header>
 </div>
 
-<section class="container my-5">
-    <div th:object="${osoba}">
-        <h2 th:text="${'Přidat pojištění k ' + osoba.jmeno + ' ' + osoba.prijmeni}"></h2>
-    </div>
-    <form role="form" method="post" th:action="@{/pojistenci/detail-pojistence/nove-pojisteni/{osoba_id}/save}" th:object="${pojisteni}">
+<section class="container mt-5">
+    <form role="form" method="post" th:action="@{/pojisteni/update/__${pojisteni_id}__/save}"
+          th:object="${pojisteni}">
+        <h2>Edit pojištění</h2>
         <div class="form-group row mt-4">
             <div class="col-2">
-                <label class="col-form-label">Pojištění:</label>
+                <label class="col-form-label">ID pojištění:</label>
             </div>
             <div class="col-3">
-                <input type="text" class="form-control col-form-label" placeholder="Pojištění majetku" th:field="*{druh_pojisteni}"/>
+                <input type="text" class="form-control col-form-label" readonly="readonly" th:field="*{pojisteni_id}"/>
             </div>
         </div>
         <div class="form-group row">
             <div class="col-2">
-                <label class="col-form-label">ID:</label>
+                <label class="col-form-label">Pojištění:</label>
             </div>
             <div class="col-3">
-                <input type="number" class="form-control col-form-label" th:value="${osoba_id}" th:attr="name='osoba_id'"/>
+                <input type="text" class="form-control col-form-label" th:field="*{druh_pojisteni}"/>
             </div>
         </div>
         <div class="form-group row">
@@ -72,7 +71,7 @@
                 <label class="col-form-label">Částka:</label>
             </div>
             <div class="col-3">
-                <input type="number" class="form-control col-form-label" th:placeholder="10000000" th:field="*{castka}"/>
+                <input type="text" class="form-control col-form-label" th:field="*{castka}"/>
             </div>
         </div>
         <div class="form-group row">
@@ -80,7 +79,7 @@
                 <label class="col-form-label">Předmět pojištění:</label>
             </div>
             <div class="col-3">
-                <input type="text" class="form-control col-form-label" placeholder="Byt" th:field="*{predmet_pojisteni}"/>
+                <input type="text" class="form-control col-form-label" th:field="*{predmet_pojisteni}"/>
             </div>
         </div>
         <div class="form-group row">
@@ -88,7 +87,7 @@
                 <label class="col-form-label">Platnost od:</label>
             </div>
             <div class="col-3">
-                <input type="text" class="form-control col-form-label" placeholder="1.1.2022" th:field="*{platnost_od}"/>
+                <input type="text" class="form-control col-form-label" th:field="*{platnost_od}"/>
             </div>
         </div>
         <div class="form-group row">
@@ -96,7 +95,7 @@
                 <label class="col-form-label">Platnost do:</label>
             </div>
             <div class="col-3">
-                <input type="text" class="form-control col-form-label" placeholder="31.12.2022" th:field="*{platnost_do}"/>
+                <input type="text" class="form-control col-form-label" th:field="*{platnost_do}">
             </div>
         </div>
         <div class="form-row text-center">

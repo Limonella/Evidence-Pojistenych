@@ -15,28 +15,28 @@ public class OsobaController {
     @Autowired
     private SpravceOsob spravceOsob;
 
-    // READ
+    // READ načtení seznamu pojištěnců
     @GetMapping
     public String vypisPojistence(Model model) {
         model.addAttribute("osoby", spravceOsob.readSeznamOsob());
         return "pojistenci";
     }
 
-    // CREATE
+    // CREATE vytvoření nového pojištěnce
     @GetMapping("/novy-pojistenec")
     public String renderNovyPojistenec(Model model) {
         model.addAttribute("osoba", new Osoba());
         return "novy-pojistenec";
     }
 
-    // CREATE
-    @PostMapping("/nove-pojistenec/save")
+    // CREATE vytvoření nového pojištěnce - uložení
+    @PostMapping("/novy-pojistenec/save")
     public String novyPojistenec(@ModelAttribute("osoba") Osoba osoba) {
         spravceOsob.insertOsobu(osoba);
         return "redirect:/pojistenci";
     }
 
-    // DELETE
+    // DELETE smazání pojištěnce, včetně jeho pojištění
     @PostMapping("/delete/{osoba_id}")
     public String smazatPojisteneho(@PathVariable(name = "osoba_id") int osoba_id) {
         System.out.println("ID: " + osoba_id);
@@ -44,7 +44,7 @@ public class OsobaController {
         return "redirect:/pojistenci";
     }
 
-    // UPDATE
+    // UPDATE edit pojištěnce
     @GetMapping("/update/{osoba_id}")
     public ModelAndView upravaPojistence(@PathVariable(name = "osoba_id") int osoba_id) {
         ModelAndView updateView = new ModelAndView("update-pojistence");
@@ -53,11 +53,11 @@ public class OsobaController {
         return updateView;
     }
 
-    // UPDATE
+    // UPDATE edit pojištěnce - uložení
     @PostMapping("/update/{osoba_id}/save")
     public String upravaPojistenceSave(@ModelAttribute("osoba") Osoba osoba) {
         spravceOsob.updateOsobu(osoba);
-        return "redirect:/pojistenci";
+        return "redirect:/pojistenci/detail-pojistence/" + osoba.getOsoba_id();
     }
 
 }

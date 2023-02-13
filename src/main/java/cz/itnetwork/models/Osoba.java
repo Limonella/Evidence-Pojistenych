@@ -23,7 +23,7 @@ public class Osoba {
         this.psc = psc;
     }
 
-    // konstruktor bez id
+    // konstruktor bez osoba_id
     public Osoba(String jmeno, String prijmeni, String email, String telefonniCislo, String uliceACP, String mesto, String psc) {
         this.jmeno = jmeno;
         this.prijmeni = prijmeni;
