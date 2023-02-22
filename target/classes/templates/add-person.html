@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="cs-cz" th:with="currentPage='insured-persons'" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="~{fragments/layout.html :: head}"></div>
+    <title>Add insured person</title>
+</head>
+
+<body>
+<header th:insert="~{fragments/layout.html :: header}"></header>
+
+<section class="container my-5">
+    <form method="post" role="form" th:action="@{/insured-persons/add-person/save}" th:object="${person}">
+        <h2>Add insured person</h2>
+        <div class="form-group row mt-4">
+            <div class="col-2">
+                <label class="col-form-label">Name:</label>
+            </div>
+            <div class="col-3">
+                <input class="form-control col-form-label" placeholder="Jan" th:field="*{name}" type="text"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label class="col-form-label">Surname:</label>
+            </div>
+            <div class="col-3">
+                <input class="form-control col-form-label" placeholder="Novák" th:field="*{surname}" type="text"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label class="col-form-label">Email:</label>
+            </div>
+            <div class="col-3">
+                <input class="form-control col-form-label" placeholder="jan.novak@seznam.cz" th:field="*{email}"
+                       type="text"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label class="col-form-label">Phone number:</label>
+            </div>
+            <div class="col-3">
+                <input class="form-control col-form-label" placeholder="123 456 789" th:field="*{phoneNumber}"
+                       type="text"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label class="col-form-label">Street name and building number:</label>
+            </div>
+            <div class="col-3">
+                <input class="form-control col-form-label" placeholder="Ve Svahu 3" th:field="*{streetNameABN}"
+                       type="text">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label class="col-form-label">City:</label>
+            </div>
+            <div class="col-3">
+                <input class="form-control col-form-label" placeholder="Praha 1" th:field="*{city}" type="text">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label class="col-form-label">ZIP code:</label>
+            </div>
+            <div class="col-3">
+                <input class="form-control col-form-label" placeholder="100 00" th:field="*{zipCode}" type="text">
+            </div>
+        </div>
+        <div class="form-row text-center">
+            <div class="col-5 mt-3">
+                <button class="btn btn-primary" type="submit">Save</button>
+            </div>
+        </div>
+    </form>
+</section>
+</body>
+</html>

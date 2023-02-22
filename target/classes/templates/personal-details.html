@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="cs-cz" th:with="currentPage='insured-persons'" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="~{fragments/layout.html :: head}"></div>
+    <title>Personal details</title>
+</head>
+
+<body>
+<header th:insert="~{fragments/layout.html :: header}"></header>
+<section class="container">
+    <div class="row pt-5">
+        <div class="col-2 pt-3">
+            <picture>
+                <!--<source srcset="" type="image"/>-->
+                <img alt="profile picture" class="img-fluid border border-dark d-inline-block align-top" height="180"
+                     src=""
+                     width="180"/>
+            </picture>
+        </div>
+        <div class="col-5">
+            <table class="table table-borderless table-sm" th:object="${person}">
+                <tr>
+                    <td><h2 th:text="${person.name + ' ' + person.surname}"></h2></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td th:text="${person.streetNameABN}"></td>
+                    <td th:text="${person.email}"></td>
+                </tr>
+                <tr>
+                    <td th:text="${person.city}"></td>
+                    <td th:text="${person.phoneNumber}"></td>
+                </tr>
+                <tr>
+                    <td th:text="${person.zipCode}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="justify-content-center mt-5">
+        <h3>Contracted insurances</h3>
+    </div>
+    <div class="row">
+        <div class="col-xl-12 col-md-6">
+            <table class="table table-striped table-bordered table-hover my-3">
+                <thead>
+                <tr>
+                    <th scope="col">Insurance</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="insurance : ${insurances}">
+                    <form method="get" role="form" th:object="${insurance}">
+                        <td class="align-middle"><u><a
+                                class="link-primary"
+                                th:field="${insurance}"
+                                th:href="@{/insured-persons/personal-details/insurance-details/__${insurance.insuranceId}__}"
+                                th:text="${insurance.typeOfInsurance}"></a></u>
+                        </td>
+                    </form>
+                    <td class="align-middle" th:text="${insurance.amount + ',- Kč'}"></td>
+                    <td>
+                        <div class="d-flex justify-content-center">
+                            <form action="#" method="get" role="form"
+                                  th:action="@{/insurances/edit/__${insurance.insuranceId}__}"
+                                  th:object="${insurance}">
+                                <button class="btn btn-warning mr-1" th:field="${insurance}" type="submit">Edit
+                                </button>
+                            </form>
+                            <form action="#" method="post" role="form"
+                                  th:action="@{/insurances/delete/__${insurance.insuranceId}__}"
+                                  th:object="${insurance}">
+                                <button class="btn btn-danger"
+                                        onClick="return confirm('Are you sure you want to delete this insurance from the database?')"
+                                        th:field="${insurance}"
+                                        type="submit">Delete
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <form method="get" role="form"
+              th:action="@{/insured-persons/personal-details/add-insurance/__${person.personId}__}"
+              th:object="${person}">
+            <button class="btn btn-primary mr-1" th:field="${person}" type="submit">Add insurance</button>
+        </form>
+        <form method="get" role="form" th:action="@{/insured-persons/edit/__${person.personId}__}"
+              th:object="${person}">
+            <button class="btn btn-warning mr-1" th:field="${person}" type="submit">Edit person</button>
+        </form>
+        <form method="post" role="form" th:action="@{/insured-persons/delete/__${person.personId}__}"
+              th:object="${person}">
+            <button class="btn btn-danger"
+                    onClick="return confirm('Are you sure you want to delete this person from the database?')"
+                    th:field="${person}"
+                    type="submit">Delete person
+            </button>
+        </form>
+    </div>
+</section>
+</body>
+</html>

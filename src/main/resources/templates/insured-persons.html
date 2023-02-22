@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="cs-cz" th:with="currentPage='insured-persons'" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="~{fragments/layout.html :: head}"></div>
+    <title>Insured persons</title>
+</head>
+
+<body>
+<header th:insert="~{fragments/layout.html :: header}"></header>
+
+<!--<div class="alert alert-success alert-dismissible" role="alert">
+    Pojištěnec byl uložen.
+</div>-->
+
+<section class="container pt-5">
+    <h2>Insured persons</h2>
+    <div class="d-flex justify-content-center pb-4">
+        <a class="btn btn-primary" href="/insured-persons/add-person" role="button">Add person</a>
+    </div>
+    <div>
+        <div>
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="person : ${persons}">
+                    <form method="get" role="form" th:object="${person}">
+                        <td class="align-middle"><u><a class="link-primary"
+                                                       th:field="${person}"
+                                                       th:href="@{/insured-persons/personal-details/__${person.personId}__}"
+                                                       th:text="${person.name + ' ' + person.surname}"></a></u></td>
+                    </form>
+                    <td class="align-middle"
+                        th:text="${person.streetNameABN + ', ' + person.city + ', ' + person.zipCode}"></td>
+                    <td>
+                        <div class="d-flex justify-content-center item">
+                            <form action="#" method="get" role="form"
+                                  th:action="@{/insured-persons/edit/__${person.personId}__}" th:object="${person}">
+                                <button class="btn btn-warning mr-1" th:field="${person}" type="submit">Edit
+                                </button>
+                            </form>
+                            <form action="#" method="post" role="form"
+                                  th:action="@{/insured-persons/delete/__${person.personId}__}" th:object="${person}">
+                                <button class="btn btn-danger"
+                                        onClick="return confirm('Are you sure you want to delete this person from the database?')"
+                                        th:field="${person}"
+                                        type="submit">Delete
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center pt-3">
+        <nav aria-label="Stránkování">
+            <ul class="pagination example">
+                <li class="page-item disabled">
+                    <a aria-label="Previous" class="page-link" href="#">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a aria-label="Next" class="page-link" href="#">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</section>
+</body>
+</html>
