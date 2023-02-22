@@ -3,7 +3,7 @@
 * Projekt je rozpracovaný, ale hlavní část je hotová a funkční.
 
 ### Použité technologie a koncepty:
-* Java, Spring Boot, MySQL, Thymeleaf, HTML, CSS, Bootstrap, JDBC, MVC, ORM, CRUD.
+* Java, Spring Boot, MySQL, Thymeleaf, HTML, CSS, Bootstrap, JDBC, MVC, CRUD.
 
 ### Co je hotové:
 * aplikace obsahuje kompletní správu pojištěných (např. "Jan Novák") a jejich pojištění (např. "pojištění bytu"):
